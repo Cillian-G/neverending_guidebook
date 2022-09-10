@@ -2,4 +2,17 @@
 
 {% block content %}
 
+<div>
+    <ul>
+        {% for location in location_list %}
+        <li>
+            Title: {{ location.title }}
+        </li>
+        {% endfor %}
+        <li>To see more content, become a patron</li>
+
+    </ul>
+</div>
+
 {% endblock content %}
+
