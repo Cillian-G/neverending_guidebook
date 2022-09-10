@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField 
 
 
+class Region(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.name
+
 class Location(models.Model):
 
     COUNTRY_CHOICES = [
@@ -15,14 +21,10 @@ class Location(models.Model):
         ('PA', 'Panama')
     ]
 
-    REGION_CHOICES = [
-        ('CA', 'Central America')
-    ]
-
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     country = models.CharField(choices=COUNTRY_CHOICES)
-    region = models.CharField(choices=REGION_CHOICES)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
     content = models.TextField(blank=True)
     bookmarks = models.ManyToManyField(
         User, related_name='location_bookmark', blank=True
@@ -67,3 +69,4 @@ class Patron(models.Model):
 
     def __str__(self):
         return self.user
+
