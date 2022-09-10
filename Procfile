@@ -1,1 +1,1 @@
-web: gunicorn neverending-guidebook.wsgi
+web: gunicorn guidebook.wsgi
