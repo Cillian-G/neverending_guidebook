@@ -5,5 +5,5 @@ from .models import Location
 
 class PreviewList(generic.ListView):
     model = Location
-    queryset = Location.objects.order_by('title')
+    queryset = Location.objects.filter(preview=True).order_by('title')
     template_name = 'index.html'
