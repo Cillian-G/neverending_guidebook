@@ -32,6 +32,7 @@ class Location(models.Model):
     map_image = CloudinaryField('image', default='placeholder')
     landscape_image = CloudinaryField('image', default='placeholder')
     feature_image = CloudinaryField('image', default='placeholder')
+    preview = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
