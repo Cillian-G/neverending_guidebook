@@ -23,7 +23,7 @@ class Location(models.Model):
 
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    country = models.CharField(choices=COUNTRY_CHOICES)
+    country = models.CharField(max_length=50, choices=COUNTRY_CHOICES)
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     content = models.TextField(blank=True)
     bookmarks = models.ManyToManyField(
@@ -56,7 +56,7 @@ class Contact(models.Model):
 
     name = models.CharField(max_length=100, null=False, blank=False)
     email = models.EmailField(null=False, blank=False)
-    subject = models.CharField(choices=SUBJECT_CHOICES)
+    subject = models.CharField(max_length=20, choices=SUBJECT_CHOICES)
     message = models.TextField(null=False, blank=False)
 
     def __str__(self):
