@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <h3>Our free preview content is listed below, to see more you'll have to become a patron</h3>
+    <ul>
+        {% for location in location_list %}
+        <li>
+           <a href="{% url 'location' location.slug %}">Title: {{ location.title }}</a> 
+        </li>
+        {% endfor %}
+        <li>To see more content, become a patron</li>
+
+    </ul>
+</div>
+
+{% endblock content %}
