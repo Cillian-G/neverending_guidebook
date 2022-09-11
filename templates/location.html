@@ -8,10 +8,11 @@
         <li>Title {{ location.title }}</li>
         <li>Country {{ location.country }}</li>
     </ul>
+    
     <div><img src="{{ location.featured_image.url }}" alt=""></div>
     <div><img src="{{ location.landscape_image.url }}" alt=""></div>
     <div><img src="{{ location.map_image.url }}" alt=""></div>
-    <div><p>{{ location.content }}</p></div>
+    <div>{{ location.content }}</div>
 </div>
 
 {% endblock content %}
