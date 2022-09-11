@@ -65,9 +65,9 @@ class Contact(models.Model):
 
 
 class Patron(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     patron_status = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
