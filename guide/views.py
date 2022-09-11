@@ -26,3 +26,9 @@ class LocationDetails(View):
                 'bookmarked': bookmarked,
             }
         )
+
+
+class LocationList(generic.ListView):
+    model = Location
+    queryset = Location.objects.order_by('country', 'title')
+    template_name = 'location_directory.html'
