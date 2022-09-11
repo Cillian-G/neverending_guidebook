@@ -12,6 +12,7 @@
     <title>Neverending Guidebook</title>
 </head>
 <body>
+    <a href="{% url 'home' %}"><h1>The Neverending Guidebook</h1></a>
     <nav>
         <div>
             <ul>
@@ -31,7 +32,7 @@
                 </li>
                 {% endif %}
                 <li>
-                    <a href="#">Guidebook Content</a>
+                    <a href="{% url 'directory' %}">Guidebook Content</a>
                 </li>
             </ul>
         </div>
