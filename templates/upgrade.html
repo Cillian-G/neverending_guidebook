@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <p>checkout page</p>
+
+        <!-- Crispy fields not working? -->
+        <form action="{ url 'checkout' %}" method="POST" id="checkout-form">
+            {% csrf_token %}
+            {{ checkout_form.email }}
+            {{ checkout_form.country_of_residence }}
+        </form>
+    </div>
+
+   
+
+{% endblock %}
+
+{% block postloadjs %}
+{% endblock %}
