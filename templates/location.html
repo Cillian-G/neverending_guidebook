@@ -14,7 +14,7 @@
     <p>bookmark this location</p>
     <form action="{% url 'location_bookmark' location.slug %}" method="POST">
         {% csrf_token %}
-        {% if bookmarked %}
+        {% if not bookmarked %}
             <button type="submit" value="{{location.slug}}">
                 <p>add bookmark</p>
             </button>
@@ -29,7 +29,7 @@
     <div><img src="{{ location.featured_image.url }}" alt=""></div>
     <div><img src="{{ location.landscape_image.url }}" alt=""></div>
     <div><img src="{{ location.map_image.url }}" alt=""></div>
-    <div>{{ location.content }}</div>
+    <div>{{ location.content | safe }}</div>
 </div>
 
 {% endblock content %}
