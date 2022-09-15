@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <div>
+            <a href="{% url 'upgrade' %}">Upgrade your account</a>
+        </div>
+
+        <ul>
+        {% for location in user_bookmarks %}
+        <li><a href="{% url 'location' location.slug %}">{{ location.title }}</a></li>    
+        {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endblock content %}
