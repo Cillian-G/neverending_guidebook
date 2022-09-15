@@ -40,9 +40,13 @@
                 <li>
                     <a href="#">My Bookmarks</a>
                 </li>
-                <li>
-                    <a href="{% url 'checkout' %}">Become a patron!</a>
-                </li>
+                
+                    {% if request.user.patron.patron_status != True %}
+
+                    <li>
+                        <a href="{% url 'checkout' %}">Become a patron!</a>
+                    </li>
+                    {% endif %}
                 {% else %}
                 <li>
                     <a href="{% url 'account_login' %}">Login</a>
