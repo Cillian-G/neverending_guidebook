@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% block content %}
 
-{% block content %}
+{% load crispy_forms_tags %}
 
 <div>
     <p>locations details</p>
@@ -8,7 +8,24 @@
         <li>Title {{ location.title }}</li>
         <li>Country {{ location.country }}</li>
     </ul>
-    
+
+    {% if user.is_authenticated %}
+
+    <p>bookmark this location</p>
+    <form action="{% url 'location_bookmark' location.slug %}" method="POST">
+        {% csrf_token %}
+        {% if bookmarked %}
+            <button type="submit" value="{{location.slug}}">
+                <p>add bookmark</p>
+            </button>
+        {% else %}
+        <button type="submit" value="{{location.slug}}">
+            <p>remove bookmark</p>
+        </button>
+        {% endif %}
+    </form>
+    {% endif %}
+
     <div><img src="{{ location.featured_image.url }}" alt=""></div>
     <div><img src="{{ location.landscape_image.url }}" alt=""></div>
     <div><img src="{{ location.map_image.url }}" alt=""></div>

@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from .models import Location   
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from .models import Location
+# from .forms import BookmarkForm
 
 
 class PreviewList(generic.ListView):
@@ -32,3 +35,23 @@ class LocationList(generic.ListView):
     model = Location
     queryset = Location.objects.order_by('country', 'title')
     template_name = 'location_directory.html'
+
+
+class LocationBookmark(View):
+
+    def post(self, request, slug):
+        location = get_object_or_404(Location, slug=slug)
+
+        if location.bookmarks.filter(id=request.user.id).exists():
+            location.bookmarks.remove(request.user)
+        else:
+            location.bookmarks.add(request.user)
+        
+        return HttpResponseRedirect(reverse('location', args=[slug]))
+
+
+# class BookmarkList(generic.ListView):
+#     model = Location
+    
+#     template_name = 'my_account.html'
+
