@@ -1,18 +1,35 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from .forms import CheckoutForm
+from guide.models import Patron
+from django.contrib.auth.models import User
 
 import stripe
 
 # Add check for patron status
 def checkout(request):
+    patron = get_object_or_404(Patron, pk=request.user.id)
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    patron_status = False
-    if patron_status:
-        messages.error(request, "Your account is already patron status")
-        return redirect(reverse('home'))
+    if request.method == 'POST':
+
+        form_data = {
+            'email': request.POST['email']
+            }
+        
+        checkout_form = CheckoutForm(form_data)
+        if checkout_form.is_valid():
+            checkout_form.save()
+            patron.patron_status = True
+            patron.save()
+            
+            
+
+    # patron_status = False
+    # if patron_status:
+    #     messages.error(request, "Your account is already patron status")
+    #     return redirect(reverse('home'))
     
     # unauthenticated users wont be able to see the form, so any users without accounts that access this page
     # will get an error message in html
@@ -35,6 +52,6 @@ def checkout(request):
     return render(request, template, context)
 
 
-    #user = get_bjector4040
-    #user.patron_status = True
-    #user.save
+    # user = get_bjector4040
+    # user.patron_status = True
+    # user.save
