@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}    
+    <div>
+        <p>newsletter page</p>
+
+        <!-- Crispy fields not working? -->
+        <form action="{% url 'newsletter' %}" method="POST" id="newsletter-form">
+            <fieldset>
+                {% csrf_token %}
+                {{ newsletter_form.email }}
+            </fieldset>
+            <div>                    
+                <button id="submit-button" type="submit">
+                    <span>Confirm sign-up</span>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %} 
