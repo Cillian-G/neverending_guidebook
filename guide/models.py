@@ -10,21 +10,21 @@ class Region(models.Model):
     def __str__(self):
         return self.name
 
-class Location(models.Model):
 
-    COUNTRY_CHOICES = [
-        ('BE', 'Belize'),
-        ('CR', 'Costa Rica'),
-        ('ES', 'El Salvador'),
-        ('GU', 'Guatemala'),
-        ('HO', 'Honduras'),
-        ('NI', 'Nicaragua'),
-        ('PA', 'Panama')
-    ]
+class Country(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    region = models.ForeignKey(
+        Region, on_delete=models.CASCADE, related_name='country'
+        )
+
+
+class Location(models.Model):
 
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    country = models.CharField(max_length=50, choices=COUNTRY_CHOICES)
+    country = models.ForeignKey(
+        Country, on_delete=models.CASCADE, related_name='country'
+        )
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     content = models.TextField(blank=True)
     bookmarks = models.ManyToManyField(
@@ -39,15 +39,10 @@ class Location(models.Model):
         return self.title
 
 
-class Newsletter(models.Model):
-    email = models.EmailField(max_length=254)
-
-    def __str__(self):
-        return self.email
-
-
 class Patron(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True
+        )
     patron_status = models.BooleanField(default=False)
 
     def __str__(self):
