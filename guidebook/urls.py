@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('contact/', include('contact.urls')),
+    path('newsletter/', include('newsletter.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('guide.urls'), name='guide_urls'),
