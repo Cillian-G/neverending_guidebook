@@ -12,6 +12,11 @@ def checkout(request):
     patron = get_object_or_404(Patron, pk=request.user.id)
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+
+    if patron.patron_status is True:
+        messages.error(request, "Your account is already patron status")
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
 
         form_data = {
@@ -23,13 +28,11 @@ def checkout(request):
             checkout_form.save()
             patron.patron_status = True
             patron.save()
+            return render(
+                request,
+                "upgrade_success.html",)
             
-            
-
-    # patron_status = False
-    # if patron_status:
-    #     messages.error(request, "Your account is already patron status")
-    #     return redirect(reverse('home'))
+    
     
     # unauthenticated users wont be able to see the form, so any users without accounts that access this page
     # will get an error message in html
