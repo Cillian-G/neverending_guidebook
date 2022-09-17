@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 from django.conf import settings
-
+from django.contrib.auth.models import User
 from guide.models import Patron
 
 # Create your models here.
@@ -13,7 +13,6 @@ class PatronUpgrade(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(max_length=254, null=False, blank=False)
-    country_of_residence = models.CharField(max_length=40, null=False, blank=False)
 
     def _generate_order_number(self):
         
