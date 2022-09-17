@@ -11,7 +11,6 @@
             <fieldset>
                 {% csrf_token %}
                 {{ checkout_form.email }}
-                {{ checkout_form.country_of_residence }}
             </fieldset>
             <fieldset class="px-3">
                 <legend>Payment</legend>
@@ -23,7 +22,7 @@
             </fieldset>
 
             <div>                    
-                <button id="submit-button">
+                <button id="submit-button" type="submit">
                     <span>Complete Order</span>
                 </button>
                 <p>
