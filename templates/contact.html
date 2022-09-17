@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <p>contact page</p>
+
+        <!-- Crispy fields not working? -->
+        <form action="{% url 'contact' %}" method="POST" id="contact-form">
+            <fieldset>
+                {% csrf_token %}
+                {{ contact_form.name }}
+                {{ contact_form.email }}
+                {{ contact_form.subject }}
+                {{ contact_form.message }}
+            </fieldset>
+            <div>                    
+                <button id="submit-button" type="submit">
+                    <span>Send message</span>
+                </button>
+            </div>
+        </form>
+    </div>
+   
+
+{% endblock %}
