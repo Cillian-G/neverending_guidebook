@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
-from .models import Location
+from .models import Location, Patron
 # from .forms import BookmarkForm
 
 
@@ -49,9 +50,4 @@ class LocationBookmark(View):
         
         return HttpResponseRedirect(reverse('location', args=[slug]))
 
-
-# class BookmarkList(generic.ListView):
-#     model = Location
-    
-#     template_name = 'my_account.html'
 
