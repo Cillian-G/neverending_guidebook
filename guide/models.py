@@ -65,7 +65,7 @@ class Contact(models.Model):
 
 
 class Patron(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     patron_status = models.BooleanField(default=False)
 
     def __str__(self):
