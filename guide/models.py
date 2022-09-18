@@ -16,6 +16,9 @@ class Country(models.Model):
     region = models.ForeignKey(
         Region, on_delete=models.CASCADE, related_name='country'
         )
+    
+    def __str__(self):
+        return self.name
 
 
 class Location(models.Model):
@@ -53,3 +56,10 @@ def create_patron(instance, created, **kwargs):
 
 post_save.connect(create_patron, sender=User)
 
+
+class BookmarkNotes(models.Model):
+    bookmark_notes = models.ForeignKey(Location, on_delete=models.CASCADE)
+    bookmark_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
