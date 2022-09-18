@@ -22,9 +22,10 @@ amiresponisive image
 ## Deployment
 [See deployment documentation here](documentation/testing/testing.md)
 ## Credits
-
 ### Content
 Travel guide contents were sourced from wikitravel.org
+This project was built from codeinstitute project template file from github. 
+Stripe implementation was based on the Boutique Ado project
 ### Media
 Location photos were sourced from the following URLs    
 - Caye Caulker: https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/b5/4c/c8/caye-caulker.jpg?w=1200&h=-1&s=1
