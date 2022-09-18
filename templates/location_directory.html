@@ -4,21 +4,14 @@
 
 
 <div>
-    <h1>location directory</h1>
+    <h3>location directory</h3>
     <ul>
-        {% if user.is_authenticated %}
-            {% for location in location_list %}
+        {% for location in location_list %}
             <li>
                 <a href="{% url 'location' location.slug %}">{{ location.title }}</a> 
             </li>
-            {% endfor %}
-        {% else %}
-            <li>Listings are only available to users with patron accounts</li>
-        {% endif %}
+        {% endfor %}
     </ul>
-    
-
-
 </div>
 
 
