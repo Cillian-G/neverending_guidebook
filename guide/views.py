@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
-from .models import Location, Patron
+from .models import Location, User
 # from .forms import BookmarkForm
 
 
@@ -49,5 +49,6 @@ class LocationBookmark(View):
             location.bookmarks.add(request.user)
         
         return HttpResponseRedirect(reverse('location', args=[slug]))
+
 
 
