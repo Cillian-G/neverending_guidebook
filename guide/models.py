@@ -51,6 +51,7 @@ class Patron(models.Model):
     def __str__(self):
         return self.user.username
 
+# The following 4 lines of code were provided to me by a Code Institute tutor
 def create_patron(instance, created, **kwargs): 
     if created: Patron.objects.create(user=instance) 
 
