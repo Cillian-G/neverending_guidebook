@@ -3,15 +3,10 @@
 {% load crispy_forms_tags %}
 
 <div>
-    <p>locations details</p>
-    <ul>
-        <li>{{ location.title }}</li>
-        <li>{{ location.country }}</li>
-    </ul>
+    <h3>{{ location.title }}, {{ location.country }}</h3>
+    
     {% if request.user.patron.patron_status or location.preview %}
     {% if user.is_authenticated %}
-
-        <p>bookmark this location</p>
         <form action="{% url 'location_bookmark' location.slug %}" method="POST">
             {% csrf_token %}
             {% if not bookmarked %}
