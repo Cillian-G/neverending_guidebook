@@ -9,8 +9,8 @@
         </div>
 
         <ul>
-        {% for location in user_bookmarks %}
-        <li><a href="{% url 'location' location.slug %}">{{ location.title }}</a></li>    
+        {% for bookmarked_location in user_bookmarks %}
+        <li><a href="{% url 'location' location.slug %}">{{ bookmarked_location.title }}</a></li>    
         {% endfor %}
         </ul>
 
