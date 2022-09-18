@@ -5,31 +5,33 @@
 <div>
     <p>locations details</p>
     <ul>
-        <li>Title {{ location.title }}</li>
-        <li>Country {{ location.country }}</li>
+        <li>{{ location.title }}</li>
+        <li>{{ location.country }}</li>
     </ul>
-
+    {% if request.user.patron.patron_status or location.preview %}
     {% if user.is_authenticated %}
 
-    <p>bookmark this location</p>
-    <form action="{% url 'location_bookmark' location.slug %}" method="POST">
-        {% csrf_token %}
-        {% if not bookmarked %}
+        <p>bookmark this location</p>
+        <form action="{% url 'location_bookmark' location.slug %}" method="POST">
+            {% csrf_token %}
+            {% if not bookmarked %}
+                <button type="submit" value="{{location.slug}}">
+                    <p>add bookmark</p>
+                </button>
+            {% else %}
             <button type="submit" value="{{location.slug}}">
-                <p>add bookmark</p>
+                <p>remove bookmark</p>
             </button>
-        {% else %}
-        <button type="submit" value="{{location.slug}}">
-            <p>remove bookmark</p>
-        </button>
+            {% endif %}
+        </form>
         {% endif %}
-    </form>
-    {% endif %}
 
-    <div><img src="{{ location.featured_image.url }}" alt=""></div>
-    <div><img src="{{ location.landscape_image.url }}" alt=""></div>
-    <div><img src="{{ location.map_image.url }}" alt=""></div>
-    <div>{{ location.content | safe }}</div>
+        <div><img src="{{ location.featured_image.url }}" alt=""></div>
+        <div><img src="{{ location.landscape_image.url }}" alt=""></div>
+        <div><img src="{{ location.map_image.url }}" alt=""></div>
+        <div>{{ location.content | safe }}</div>
+    {% else %}
+    <h4>Sorry, this content isn't available as a free preview. Please consider becomeing a patron of the site if you would like to see more.</h4>
 </div>
 
 {% endblock content %}
