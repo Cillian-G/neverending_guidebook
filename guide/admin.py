@@ -1,15 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Region, Location, Patron 
+from .models import Region, Location, Patron, Country 
 from django_summernote.admin import SummernoteModelAdmin
 
 
 admin.site.register(Region)
-# @admin.register(Region)
-# class RegionAdmin(admin.ModelAdmin):
 
-#     list_display = ('name')
+
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'region')
+    search_fields = ['name']
 
 
 @admin.register(Location)
