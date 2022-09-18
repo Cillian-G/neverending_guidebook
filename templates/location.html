@@ -31,7 +31,8 @@
         <div><img src="{{ location.map_image.url }}" alt=""></div>
         <div>{{ location.content | safe }}</div>
     {% else %}
-    <h4>Sorry, this content isn't available as a free preview. Please consider becomeing a patron of the site if you would like to see more.</h4>
+        <h4>Sorry, this content isn't available as a free preview. Please consider becomeing a patron of the site if you would like to see more.</h4>
+    {% endif %}
 </div>
 
 {% endblock content %}
