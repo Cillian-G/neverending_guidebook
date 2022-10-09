@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views import generic, View
 from .forms import NewsletterForm
+from django.contrib import messages
+
 
 def newsletter(request):
 
@@ -15,9 +17,14 @@ def newsletter(request):
         newsletter_form = NewsletterForm(form_data)
         if newsletter_form.is_valid():
             newsletter_form.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'You have been added to our mailing list.'
+                )
             return render(
                 request,
-                "newsletter_success.html",)
+                "index.html",)
 
     newsletter_form = NewsletterForm()
     template = 'newsletter.html'
