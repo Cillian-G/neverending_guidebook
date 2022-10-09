@@ -4,20 +4,23 @@
 
 <div>
     <h3>{{ location.title }}, {{ location.country }}</h3>
+    <span class="icon"><i class="fa-regular fa-bookmark"></i></span>
     
     {% if request.user.patron.patron_status or location.preview %}
-    {% if user.is_authenticated %}
-        <form action="{% url 'location_bookmark' location.slug %}" method="POST">
-            {% csrf_token %}
-            {% if not bookmarked %}
-                <button type="submit" value="{{location.slug}}">
-                    <p>add bookmark</p>
-                </button>
-            {% else %}
-            <button type="submit" value="{{location.slug}}">
-                <p>remove bookmark</p>
-            </button>
-            {% endif %}
+        {% if user.is_authenticated %}
+            <form action="{% url 'location_bookmark' location.slug %}" method="POST">
+                {% csrf_token %}
+                {% if not bookmarked %}
+                    <button type="submit" value="{{location.slug}}">
+                        <span class="icon"><i class="fa-regular fa-bookmark"></i></span>
+                        <span>add bookmark</span>
+                    </button>
+                {% else %}
+                    <button type="submit" value="{{location.slug}}">
+                        <span><i class="fa-solid fa-bookmark"></i></span>
+                        <span>remove bookmark</span>
+                    </button>
+                {% endif %}
         </form>
         {% endif %}
 
