@@ -6,10 +6,54 @@
 <div>
     <h3>location directory</h3>
     <ul>
-        {% for location in location_list %}
+        {% regroup location_list by region as region_list %}
+        
+        {% for region, countries in region_list %}
             <li>
-                <a href="{% url 'location' location.slug %}">{{ location.title }}</a> 
+                {{ region }}
+                <ul>
+                    {% regroup countries by country as country_list %}
+                    {% for country, locations in country_list %}
+                        <li>
+                            {{ country }}
+                            <ul>
+                                {% for location in locations %}
+                                    <li>
+                                        {{ location }}
+                                        <br>
+                                        <!-- {{ location.content|safe|truncatechars_html:100 }} -->
+                                        <!-- Button trigger modal -->
+                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-location-{{location.id}}">
+                                            Read more
+                                        </a>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modal-location-{{location.id}}" tabindex="-1" aria-labelledby="modal-location-{{location.id}}-Label" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="modal-location-{{location.id}}-Label">{{location.title}}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{ location.content|safe }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <!--  -->
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
             </li>
+            
         {% endfor %}
     </ul>
 </div>
