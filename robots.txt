@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /accounts/
+Sitemap: https://neverending-guidebook.herokuapp.com/sitemap.xml
