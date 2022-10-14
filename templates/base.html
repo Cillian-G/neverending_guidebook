@@ -10,6 +10,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="An online alternative to bulky and expensive physcial travel guides">
+        <meta name="keywords" content="central america destinations, Shoestring travel, cheap travel, travel blog, travel influencer, influencer destinations,
+         2022 travel guide, best value travel guide, hostels, planning round the world trip, travel on a budget, central america travel guide, places to stay,
+         backpacking central america, long-term travel, central america travel blog, online travel guide, travelling on a shoestring, shoestring holidays, 
+        lonely planet on a shoestring, Lonely Planet alternative, Fodors alternative, Rough guides alternative, Bradt alternative, Footprint alternative"> 
     {% endblock %}
 
     {%block corecss%}
@@ -50,7 +55,7 @@
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Bookmarks</a>
+                            <a class="nav-link" href="{% url 'bookmarks' %}">My Bookmarks</a>
                         </li class="nav-item">
                         {% if request.user.patron.patron_status != True %}
                         <li class="nav-item">
