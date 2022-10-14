@@ -38,6 +38,17 @@ class LocationList(generic.ListView):
     template_name = 'location_directory.html'
 
 
+# def delete_region(request, item_id):
+#     region = get_object_or_404(Region, id=item_id)
+#     id = region.id
+#     if request.method == 'POST':
+#         region.delete()
+#         return redirect('directory', id=id)
+#     context = {
+#         'region': region
+#     }
+#     return render(request, 'delete_region.html', context)
+
 class LocationBookmark(View):
 
     def post(self, request, slug):
@@ -51,4 +62,46 @@ class LocationBookmark(View):
         return HttpResponseRedirect(reverse('location', args=[slug]))
 
 
+# class BookmarkList(generic.ListView):
+#     model = Location
+#     queryset = Location.objects.bookmarks.filter(id=request.user.id).order_by('country', 'title')
+#     template_name = 'my_account.html'
 
+
+# class UserBookmarks(View):
+
+#     def get(self, request, slug, *args, **kwargs): 
+#         queryset = Location.objects
+#         location = get_object_or_404(queryset, slug=slug)
+#         bookmarked = False
+#         if location.bookmarks.filter(id=self.request.user.id).exists():
+#             bookmarked = True
+        
+#         return render(
+#             request,
+#             "location.html",
+#             {
+#                 'location': location,
+#                 'bookmarked': bookmarked,
+#             }
+#         )
+
+
+
+# class BookmarkedLocations(View):
+
+#     def get(self, request):
+#         queryset = Location
+#         bookmarks = Location.bookmarks
+#         bookmarked_locations = Location.filter(
+#             id=self.request.user.id
+#             ).order_by(
+#                 "region", "country", "title"
+#                 )
+#         return render(
+#             request,
+#             "my_account.html",
+#             {
+#                 bookmarked_locations: "locations"
+#             }
+#          )
