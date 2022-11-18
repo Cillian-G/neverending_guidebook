@@ -10,13 +10,16 @@
         
         {% for region, countries in region_list %}
             <li>
-                {{ region }}
+                {{ region }} 
                 <ul>
+                    <li class="list-inline-item">
+                        <button onClick="location.href='/delete/{{ region.id }}'" class="btn btn-outline-secondary btn-sm">Delete this region</button>
+                    </li>
                     {% regroup countries by country as country_list %}
                     {% for country, locations in country_list %}
                         <li>
                             {{ country }}
-                            <ul>
+                            <ul> 
                                 {% for location in locations %}
                                     <li>
                                         <a href="{% url 'location' location.slug %}">{{ location.title }}</a>
