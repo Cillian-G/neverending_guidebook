@@ -11,4 +11,5 @@ urlpatterns = [
         'bookmark/<slug:slug>/', views.LocationBookmark.as_view(),
         name='location_bookmark'
         ),
+    path('delete/<item_id>', views.delete_region, name='delete'),
 ]
