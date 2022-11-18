@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
 from .models import Location, User, Region
+from .forms import RegionForm
 # from .forms import BookmarkForm
 
 
@@ -48,6 +49,21 @@ def delete_region(request, item_id):
         'region': region
     }
     return render(request, 'delete_region.html', context)
+
+def edit_region(request, item_id):
+    region = get_object_or_404(Region, id=item_id)
+    id = region.id
+    if request.method == 'POST':
+        region_form = RegionForm(request.POST, instance=region)
+        if region_form.is_valid():
+            region = region_form.save(commit=False)
+            region.save()
+            return redirect('directory')
+    context = {
+        'region_form': RegionForm(),
+        'region': region
+    }
+    return render(request, 'edit_region.html', context)
 
 class LocationBookmark(View):
 
