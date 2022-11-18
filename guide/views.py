@@ -42,6 +42,23 @@ class LocationList(generic.ListView):
 
 
 @login_required
+def add_region(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request,
+            'Only memebers of the Neverending Guidebook staff can do that'
+            )
+        return redirect(reverse('home'))
+    region_form = RegionForm(request.POST or None)
+    if request.method == 'POST':
+        if region_form.is_valid():
+            region_form.save()
+            return redirect('directory')
+    context = {
+        'region_form': region_form
+    }
+    return render(request, 'add_region.html', context)
+@login_required
 def delete_region(request, item_id):
     if not request.user.is_superuser:
         messages.error(
