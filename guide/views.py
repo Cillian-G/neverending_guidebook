@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Location, User, Region
 from .forms import RegionForm
+
 # from .forms import BookmarkForm
 
 
@@ -39,7 +41,12 @@ class LocationList(generic.ListView):
     template_name = 'location_directory.html'
 
 
+@login_required
 def delete_region(request, item_id):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Only memebers of the Neverending Guidebook staff can do that'
+            )
     region = get_object_or_404(Region, id=item_id)
     id = region.id
     if request.method == 'POST':
@@ -50,7 +57,14 @@ def delete_region(request, item_id):
     }
     return render(request, 'delete_region.html', context)
 
+
+@login_required
 def edit_region(request, item_id):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Only memebers of the Neverending Guidebook staff can do that'
+            )
+        return redirect(reverse('home'))
     region = get_object_or_404(Region, id=item_id)
     id = region.id
     if request.method == 'POST':
