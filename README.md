@@ -25,10 +25,10 @@ The Neverendiing Guidebook (TNG) is a e-commerce site that aims to repalce physi
 (explain various tech used, such as HTML, CSS, Balsamiq, TinyPNG, Gitpod, GitHub, Git, etc.)
 
 ## Testing
-[See testing documentation here](documentation/deployment/deployment.md)
+[See testing documentation here](documentation/testing/testing.md)
 
 ## Deployment
-[See deployment documentation here](documentation/testing/testing.md)
+[See deployment documentation here](documentation/deployment/deployment.md)
 
 ## Credits
 
