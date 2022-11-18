@@ -15,6 +15,9 @@
                     <li class="list-inline-item">
                         <button onClick="location.href='/delete/{{ region.id }}'" class="btn btn-outline-secondary btn-sm">Delete this region</button>
                     </li>
+                    <li class="list-inline-item">
+                        <button onClick="location.href='/edit/{{ region.id }}'" class="btn btn-outline-secondary btn-sm">Edit this region</button>
+                    </li>
                     {% regroup countries by country as country_list %}
                     {% for country, locations in country_list %}
                         <li>
