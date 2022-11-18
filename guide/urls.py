@@ -12,4 +12,5 @@ urlpatterns = [
         name='location_bookmark'
         ),
     path('delete/<item_id>', views.delete_region, name='delete'),
+    path('edit/<item_id>', views.edit_region, name='edit'),
 ]
