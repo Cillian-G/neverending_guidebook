@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container pl-2">
+    <h2>Are you sure you wish to delete this region?</h2>
+     <p>Doing this will delete any countries and locations associated with this region </p>
+        <form method="post">
+        {% csrf_token %}
+            <button class="btn btn-outline-danger">I am sure</button>
+        </form>
+</div>
+   
+
+{% endblock %}
