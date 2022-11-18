@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.http import HttpResponseRedirect
-from .models import Location, User
+from .models import Location, User, Region
 # from .forms import BookmarkForm
 
 
@@ -38,16 +38,16 @@ class LocationList(generic.ListView):
     template_name = 'location_directory.html'
 
 
-# def delete_region(request, item_id):
-#     region = get_object_or_404(Region, id=item_id)
-#     id = region.id
-#     if request.method == 'POST':
-#         region.delete()
-#         return redirect('directory', id=id)
-#     context = {
-#         'region': region
-#     }
-#     return render(request, 'delete_region.html', context)
+def delete_region(request, item_id):
+    region = get_object_or_404(Region, id=item_id)
+    id = region.id
+    if request.method == 'POST':
+        region.delete()
+        return redirect('directory')
+    context = {
+        'region': region
+    }
+    return render(request, 'delete_region.html', context)
 
 class LocationBookmark(View):
 
