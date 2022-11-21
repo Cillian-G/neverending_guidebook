@@ -4,13 +4,14 @@
 
     {% if user.is_authenticated %}
 
-        <div>
-            <a href="{% url 'upgrade' %}">Upgrade your account</a>
-        </div>
 
+        <div>
+        <h3>{{ user.username }}'s bookmarks</h3>
         <ul>
-        {% for bookmarked_location in user_bookmarks %}
-        <li><a href="{% url 'location' location.slug %}">{{ bookmarked_location.title }}</a></li>    
+            {% for location in locations %}
+                <li>
+                    <a href="{% url 'location' location.slug %}">{{ location.title }}</a> 
+                </li>
         {% endfor %}
         </ul>
 
