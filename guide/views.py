@@ -68,10 +68,10 @@ def add_location(request):
             'Only memebers of the Neverending Guidebook staff can do that'
             )
         return redirect(reverse('home'))
-    location_form = LocationForm(request.POST or None)
+    location_form = LocationForm(request.POST, request.FILES)
     if request.method == 'POST':
         if location_form.is_valid():
-            location_form.instance.image = request.POST.get('image')
+            # location_form.instance.image = request.POST.get('image')
             location_form.save()
             return redirect('directory')
     context = {
@@ -89,10 +89,10 @@ def edit_location(request, location_id):
             )
         return redirect(reverse('home'))
     location = get_object_or_404(Location, id=location_id)
-    location_form = LocationForm(request.POST or None, instance=location)
+    location_form = LocationForm(request.POST, request.FILES, instance=location)
     if request.method == 'POST':
         if location_form.is_valid():
-            location_form.instance.image = request.POST.get('image')
+            # location_form.instance.image = request.POST.get('image')
             location_form.save()
             return redirect('directory')
     context = {
@@ -155,6 +155,7 @@ def edit_region(request, item_id):
         'region': region
     }
     return render(request, 'edit_region.html', context)
+
 
 class LocationBookmark(View):
 
