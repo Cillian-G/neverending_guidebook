@@ -17,9 +17,9 @@ class CountryAdmin(admin.ModelAdmin):
 @admin.register(Location)
 class LocationAdmin(SummernoteModelAdmin):
 
-    list_display = ('title', 'slug', 'region', 'country', 'preview')
+    list_display = ('title', 'slug', 'country', 'preview')
     search_fields = ['title', 'content']
-    list_filter = ('preview', 'region')
+    list_filter = ('preview',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
     
