@@ -3,3 +3,13 @@
 h1 {
     font-family: 'Fjalla One', sans-serif;
 }
+
+.link {
+    text-decoration-color: blue;
+    text-decoration-line: underline;
+    color: blue;
+}
+
+.link:hover {
+    color: blue;
+}
