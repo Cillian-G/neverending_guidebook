@@ -143,7 +143,7 @@ def edit_region(request, item_id):
             )
         return redirect(reverse('home'))
     region = get_object_or_404(Region, id=item_id)
-    id = region.id
+    region_form = RegionForm(request.POST or None, instance=region)
     if request.method == 'POST':
         region_form = RegionForm(request.POST, instance=region)
         if region_form.is_valid():
@@ -151,7 +151,7 @@ def edit_region(request, item_id):
             region.save()
             return redirect('directory')
     context = {
-        'region_form': RegionForm(),
+        'region_form': region_form,
         'region': region
     }
     return render(request, 'edit_region.html', context)
