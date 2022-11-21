@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container pl-2">
     <h2>Add Location</h2>
-    <form method="post" action="{% url 'add_location' %}">
+    <form method="post" action="{% url 'add_location' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ location_form.as_p }}
         <button class="btn btn-outline-primary">Confirm new location</button>
