@@ -5,36 +5,36 @@
 <div>
     <h3>{{ location.title }}, {{ location.country }}</h3>
 
-    {% if request.user.patron.patron_status or location.preview or request.user.is_superuser %}
-        {% if user.is_authenticated %}
-            <form action="{% url 'location_bookmark' location.slug %}" method="POST">
-                {% csrf_token %}
-                {% if not bookmarked %}
-                    <button type="submit" value="{{location.slug}}">
-                        <span class="icon"><i class="fa-regular fa-bookmark"></i></span>
-                        <span>add bookmark</span>
-                    </button>
-                {% else %}
-                    <button type="submit" value="{{location.slug}}">
-                        <span><i class="fa-solid fa-bookmark"></i></span>
-                        <span>remove bookmark</span>
-                    </button>
-                {% endif %}
+{% if request.user.patron.patron_status or location.preview or request.user.is_superuser %}
+    {% if user.is_authenticated %}
+        <form action="{% url 'location_bookmark' location.slug %}" method="POST">
+            {% csrf_token %}
+            {% if not bookmarked %}
+                <button type="submit" value="{{location.slug}}">
+                    <span class="icon"><i class="fa-regular fa-bookmark"></i></span>
+                    <span>add bookmark</span>
+                </button>
+            {% else %}
+                <button type="submit" value="{{location.slug}}">
+                    <span><i class="fa-solid fa-bookmark"></i></span>
+                    <span>remove bookmark</span>
+                </button>
+            {% endif %}
             </form>
         {% endif %}
     <div class="container">
         <div class="row">
             <div class="col card mb-4  mt-3 left  top">
                 <div class="card-body">        
-        <div>{{ location.content | safe }}</div>
+                    <div>{{ location.content | safe }}</div>
                 </div>
             </div>
         </div>
     </div>
     {% else %}
-        <h4>Sorry, this content isn't available as a free preview. Please consider becomeing a patron of the site if you
+        <h4>Sorry, this content isn't available as a free preview. Please consider becoming a patron of the site if you
             would like to see more.</h4>
-    {% endif %}
+{% endif %}
 </div>
 
 {% endblock content %}
