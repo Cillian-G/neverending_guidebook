@@ -10,10 +10,7 @@
         <form action="{% url 'contact' %}" method="POST" id="contact-form">
             <fieldset>
                 {% csrf_token %}
-                {{ contact_form.name }}
-                {{ contact_form.email }}
-                {{ contact_form.subject }}
-                {{ contact_form.message }}
+                {{ contact_form.as_p}}
             </fieldset>
             <div>                    
                 <button id="submit-button" type="submit">
