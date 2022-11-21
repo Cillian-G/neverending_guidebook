@@ -2,17 +2,16 @@
 
 {% block content %}
 
-    {% if user.is_authenticated %}
+    
 
-
-        <div>
+    <div>
         <h3>{{ user.username }}'s bookmarks</h3>
         <ul>
             {% for location in locations %}
                 <li>
                     <a href="{% url 'location' location.slug %}">{{ location.title }}</a> 
                 </li>
-        {% endfor %}
+            {% endfor %}
         </ul>
         <h3>
             Patron Status: 
@@ -20,7 +19,7 @@
                 <i class="fa-solid fa-circle-check text-success"></i>
             {% else %}
                 <i class="fa-solid fa-circle-xmark text-danger"></i>
-    {% endif %}
+            {% endif %}
         </h3>
     </div>
 
