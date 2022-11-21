@@ -28,14 +28,11 @@ class Location(models.Model):
     country = models.ForeignKey(
         Country, on_delete=models.CASCADE, related_name='country'
         )
-    region = models.ForeignKey(Region, on_delete=models.CASCADE)
     content = models.TextField(blank=True)
     bookmarks = models.ManyToManyField(
         User, related_name='location_bookmark', blank=True
     )
-    map_image = CloudinaryField('image', default='placeholder')
-    landscape_image = CloudinaryField('image', default='placeholder')
-    feature_image = CloudinaryField('image', default='placeholder')
+    image = CloudinaryField('image', default='placeholder')
     preview = models.BooleanField(default=False)
 
     def __str__(self):
