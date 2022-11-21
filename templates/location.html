@@ -5,7 +5,7 @@
 <div>
     <h3>{{ location.title }}, {{ location.country }}</h3>
     <span class="icon"><i class="fa-regular fa-bookmark"></i></span>
-    
+
     {% if request.user.patron.patron_status or location.preview or request.user.is_superuser %}
         {% if user.is_authenticated %}
             <form action="{% url 'location_bookmark' location.slug %}" method="POST">
@@ -21,7 +21,7 @@
                         <span>remove bookmark</span>
                     </button>
                 {% endif %}
-        </form>
+            </form>
         {% endif %}
 
         <img src="{{ location.image.url }}" alt="">
