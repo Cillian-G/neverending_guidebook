@@ -1,22 +1,18 @@
-# NEWSLETTER VALIDATION (REPLACE IMAGE LINKS AND TITLES)
+# The Neverending Guidebook
+## Newsletter Validation
 
-![Checkout admin.py validation](/documentation/testing/testing_images/testing-checkout-admin.png)
-- Checkout admin.py validation
+![Newsletter admin.py validation](/documentation/testing/testing_images/testing-newsletter-admin.png)
+- Newsletter admin.py validation
 
-![Checkout apps.py validation](/documentation/testing/testing_images/testing-checkout-apps.png)
-- Checkout apps.py validation
+![Newsletter urls.py validation](/documentation/testing/testing_images/testing-newsletter-urls.png)
+- Newsletter urls.py validation
 
-![Checkout forms.py validation](/documentation/testing/testing_images/testing-checkout-forms.png)
-- Checkout forms.py validation
+![Newsletter forms.py validation](/documentation/testing/testing_images/testing-newsletter-forms.png)
+- Newsletter forms.py validation
 
-![Checkout models.py validation](/documentation/testing/testing_images/testing-checkout-models.png)
-- Checkout models.py validation
+![Newsletter models.py validation](/documentation/testing/testing_images/testing-newsletter-models.png)
+- Newsletter models.py validation
 
-![Checkout tests.py validation](/documentation/testing/testing_images/testing-checkout-tests.png)
-- Checkout tests.py validation
+![Newsletter views.py validation](/documentation/testing/testing_images/testing-newsletter-views.png)
+- Newsletter views.py validation
 
-![Checkout urls.py validation](/documentation/testing/testing_images/testing-checkout-urls.png)
-- Checkout urls.py validation
-
-![Checkout views.py validation](/documentation/testing/testing_images/testing-checkout-views.png)
-- Checkout views.py validation

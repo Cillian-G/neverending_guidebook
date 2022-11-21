@@ -1,22 +1,17 @@
-# GUIDEBOOK VALIDATION (REPLACE IMAGE LINKS AND TITLES)
+# The Neverending Guidebook
+## Contact Validation
 
-![Checkout admin.py validation](/documentation/testing/testing_images/testing-checkout-admin.png)
-- Checkout admin.py validation
+![Contact admin.py validation](/documentation/testing/testing_images/testing-contact-admin.png)
+- Contact admin.py validation
 
-![Checkout apps.py validation](/documentation/testing/testing_images/testing-checkout-apps.png)
-- Checkout apps.py validation
+![Contact forms.py validation](/documentation/testing/testing_images/testing-contact-forms.png)
+- Contact forms.py validation
 
-![Checkout forms.py validation](/documentation/testing/testing_images/testing-checkout-forms.png)
-- Checkout forms.py validation
+![Contact models.py validation](/documentation/testing/testing_images/testing-contact-models.png)
+- Contact models.py validation
 
-![Checkout models.py validation](/documentation/testing/testing_images/testing-checkout-models.png)
-- Checkout models.py validation
+![Contact urls.py validation](/documentation/testing/testing_images/testing-contact-urls.png)
+- Contact urls.py validation
 
-![Checkout tests.py validation](/documentation/testing/testing_images/testing-checkout-tests.png)
-- Checkout tests.py validation
-
-![Checkout urls.py validation](/documentation/testing/testing_images/testing-checkout-urls.png)
-- Checkout urls.py validation
-
-![Checkout views.py validation](/documentation/testing/testing_images/testing-checkout-views.png)
-- Checkout views.py validation
+![Contact views.py validation](/documentation/testing/testing_images/testing-contact-views.png)
+- Contact views.py validation
