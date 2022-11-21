@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 import stripe
 
+
 # Add check for patron status
 def checkout(request):
     patron = get_object_or_404(Patron, pk=request.user.id)
@@ -22,7 +23,7 @@ def checkout(request):
         form_data = {
             'email': request.POST['email']
             }
-        
+
         checkout_form = CheckoutForm(form_data)
         if checkout_form.is_valid():
             checkout_form.save()
@@ -31,12 +32,11 @@ def checkout(request):
             return render(
                 request,
                 "upgrade_success.html",)
-            
-    
-    
-    # unauthenticated users wont be able to see the form, so any users without accounts that access this page
+
+    # unauthenticated users wont be able to see the form,
+    # so any users without accounts that access this page
     # will get an error message in html
-    # Patron upgrade cost listed in cents 
+    # Patron upgrade cost listed in cents
     patron_upgrade_cost = 2500
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
@@ -50,11 +50,6 @@ def checkout(request):
         'checkout_form': checkout_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
-    }   
+    }
 
     return render(request, template, context)
-
-
-    # user = get_bjector4040
-    # user.patron_status = True
-    # user.save
