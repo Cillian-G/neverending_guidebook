@@ -56,7 +56,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'my_account' %}">My Account</a>
-                        </li class="nav-item">
+                        </li>
                         {% if request.user.patron.patron_status != True %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'checkout' %}">Become a patron!</a>
@@ -68,7 +68,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-                        </li class="nav-item">
+                        </li>
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'directory' %}">Guidebook Content</a>
@@ -102,7 +102,8 @@
 
         {% endblock content %}
     </main>
-    <footer>
+    <!-- footer mt-auto py-3 dark-bg -->
+    <footer class="footer mt-auto py-3">
         <p>This site was created for a student project, for educational purposes only</p>
     </footer>
     <script>
