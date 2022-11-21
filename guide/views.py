@@ -83,7 +83,7 @@ def edit_location(request, location_id):
         return redirect(reverse('home'))
     location = get_object_or_404(Location, id=location_id)
     location_form = LocationForm(
-        request.POST, request.FILES, instance=location
+        request.POST or None, request.FILES or None, instance=location
         )
     if request.method == 'POST':
         if location_form.is_valid():
