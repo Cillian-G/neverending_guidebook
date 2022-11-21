@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .models import Location, User, Region
-from .forms import RegionForm
+from .models import Location, User, Region, Patron
+from .forms import RegionForm, LocationForm
 
 # from .forms import BookmarkForm
 
