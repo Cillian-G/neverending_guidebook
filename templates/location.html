@@ -22,9 +22,15 @@
                 {% endif %}
             </form>
         {% endif %}
-
-        <img src="{{ location.image.url }}" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col card mb-4  mt-3 left  top">
+                <div class="card-body">        
         <div>{{ location.content | safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% else %}
         <h4>Sorry, this content isn't available as a free preview. Please consider becomeing a patron of the site if you
             would like to see more.</h4>
