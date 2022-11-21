@@ -27,5 +27,6 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('guide.urls'), name='guide_urls'),
     path('accounts/', include('allauth.urls')),
-    
 ]
+
+handler404 = 'boutique_ado.views.handler404'
