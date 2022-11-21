@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+        <h1 class="display-4 logo-font text-black">
+            The page you are looking for isn't available
+        </h1>
+        <div class="my-5">
+            <h4>
+                <a href="{% url 'home' %}">
+                    Return to homepage
+                </a>
+            </h4>
+        </div>
+    </div>
+{% endblock %}
