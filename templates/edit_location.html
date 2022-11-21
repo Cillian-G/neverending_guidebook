@@ -1,6 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container pl-2">
-    <h2>Edit Location</h2>
+    <h2>
+        Edit Location
+        <br>
+        <small>{{ location }}</small>
+    </h2>
     <form method="post" action="{% url 'edit_location' location.id %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ location_form.as_p }}
