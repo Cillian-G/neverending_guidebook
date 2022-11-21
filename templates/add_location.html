@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container pl-2">
+    <h2>Add Location</h2>
+    <form method="post" action="{% url 'add_location' %}">
+        {% csrf_token %}
+        {{ location_form.as_p }}
+        <button class="btn btn-outline-primary">Confirm new location</button>
+    </form>
+</div>
+{% endblock %}
+{% block postloadjs %}
+<script>
+    // convert location title to slug-format on front-end
+    /* jshint esversion: 11 */
+    let title = document.getElementById("id_title");
+    let slug = document.getElementById("id_slug");
+    title?.addEventListener("keyup", convertToSlug);
+    slug?.addEventListener("keyup", convertToSlug);
+
+    function convertToSlug() {
+      slug.value = title.value.toLowerCase()
+                 .replace(/ /g, '-')
+                 .replace(/[^\w-]+/g, '');
+    }
+</script>
+{% endblock %}
