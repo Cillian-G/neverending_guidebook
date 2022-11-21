@@ -14,6 +14,15 @@
                 </li>
         {% endfor %}
         </ul>
-
+        <h3>
+            Patron Status: 
+            {% if is_patron.patron_status %}
+                <i class="fa-solid fa-circle-check text-success"></i>
+            {% else %}
+                <i class="fa-solid fa-circle-xmark text-danger"></i>
     {% endif %}
+        </h3>
+    </div>
+
+    
 {% endblock content %}
