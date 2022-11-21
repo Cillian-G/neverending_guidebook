@@ -17,9 +17,9 @@ Would your business have a budget to spend on advertising? Or would it need to w
 - The business would need to concentrate on organic growth through word of mouth, perhaps with some paid influencer 
 
 ### Facebook page
-![Facebook page Screenshot 1](/documentation/marketing_and_seo/facebook1.png)
-![Facebook page Screenshot 2](/documentation/marketing_and_seo/facebook1.png)
-![Facebook page Screenshot 3](/documentation/marketing_and_seo/facebook1.png)
+![Facebook page Screenshot 1](/documentation/marketing_and_seo/marketing_and_seo_images/facebook1.png)
+![Facebook page Screenshot 2](/documentation/marketing_and_seo/marketing_and_seo_images/facebook2.png)
+![Facebook page Screenshot 3](/documentation/marketing_and_seo/marketing_and_seo_images/facebook3.png)
 
 ## SEO (Search Engine Optimisation)
 ### SEO Planning
