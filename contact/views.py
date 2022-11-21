@@ -3,6 +3,7 @@ from django.views import generic, View
 from .forms import ContactForm
 from django.contrib import messages
 
+
 def contact(request):
 
     if request.method == 'POST':
@@ -13,7 +14,7 @@ def contact(request):
             'subject': request.POST['subject'],
             'message': request.POST['message']
             }
-        
+
         contact_form = ContactForm(form_data)
         if contact_form.is_valid():
             contact_form.save()

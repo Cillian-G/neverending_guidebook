@@ -13,7 +13,7 @@ def newsletter(request):
         form_data = {
             'email': request.POST['email'],
             }
-        
+
         newsletter_form = NewsletterForm(form_data)
         if newsletter_form.is_valid():
             newsletter_form.save()

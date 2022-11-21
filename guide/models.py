@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField 
+from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 
 
@@ -16,7 +16,7 @@ class Country(models.Model):
     region = models.ForeignKey(
         Region, on_delete=models.CASCADE, related_name='country'
         )
-    
+
     def __str__(self):
         return self.name
 
@@ -48,16 +48,11 @@ class Patron(models.Model):
     def __str__(self):
         return self.user.username
 
+
 # The following 4 lines of code were provided to me by a Code Institute tutor
-def create_patron(instance, created, **kwargs): 
-    if created: Patron.objects.create(user=instance) 
+def create_patron(instance, created, **kwargs):
+    if created:
+        Patron.objects.create(user=instance)
+
 
 post_save.connect(create_patron, sender=User)
-
-
-# class BookmarkNotes(models.Model):
-#     bookmark_notes = models.ForeignKey(Location, on_delete=models.CASCADE)
-#     bookmark_owner = models.ForeignKey(User, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.user.username

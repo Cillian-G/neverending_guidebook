@@ -7,8 +7,6 @@ from django.http import HttpResponseRedirect
 from .models import Location, User, Region, Patron
 from .forms import RegionForm, LocationForm
 
-# from .forms import BookmarkForm
-
 
 class PreviewList(generic.ListView):
     model = Location
@@ -18,17 +16,13 @@ class PreviewList(generic.ListView):
 
 class LocationDetails(View):
 
-    def get(self, request, slug, *args, **kwargs): 
+    def get(self, request, slug, *args, **kwargs):
         queryset = Location.objects
         location = get_object_or_404(queryset, slug=slug)
         bookmarked = False
         if location.bookmarks.filter(id=self.request.user.id).exists():
             bookmarked = True
-        
-        return render(
-            request,
-            "location.html",
-            {
+        return render(request, "location.html", {
                 'location': location,
                 'bookmarked': bookmarked,
             }
@@ -71,7 +65,6 @@ def add_location(request):
     location_form = LocationForm(request.POST, request.FILES)
     if request.method == 'POST':
         if location_form.is_valid():
-            # location_form.instance.image = request.POST.get('image')
             location_form.save()
             return redirect('directory')
     context = {
@@ -89,10 +82,11 @@ def edit_location(request, location_id):
             )
         return redirect(reverse('home'))
     location = get_object_or_404(Location, id=location_id)
-    location_form = LocationForm(request.POST, request.FILES, instance=location)
-    if request.method == 'POST': 
+    location_form = LocationForm(
+        request.POST, request.FILES, instance=location
+        )
+    if request.method == 'POST':
         if location_form.is_valid():
-            # location_form.instance.image = request.POST.get('image')
             location_form.save()
             return redirect('directory')
     context = {
@@ -106,7 +100,8 @@ def edit_location(request, location_id):
 def delete_location(request, location_id):
     if not request.user.is_superuser:
         messages.error(
-            request, 'Only memebers of the Neverending Guidebook staff can do that'
+            request,
+            'Only memebers of the Neverending Guidebook staff can do that'
             )
     location = get_object_or_404(Location, id=location_id)
     if request.method == 'POST':
@@ -122,7 +117,8 @@ def delete_location(request, location_id):
 def delete_region(request, item_id):
     if not request.user.is_superuser:
         messages.error(
-            request, 'Only memebers of the Neverending Guidebook staff can do that'
+            request,
+            'Only memebers of the Neverending Guidebook staff can do that'
             )
     region = get_object_or_404(Region, id=item_id)
     if request.method == 'POST':
@@ -138,7 +134,8 @@ def delete_region(request, item_id):
 def edit_region(request, item_id):
     if not request.user.is_superuser:
         messages.error(
-            request, 'Only memebers of the Neverending Guidebook staff can do that'
+            request,
+            'Only memebers of the Neverending Guidebook staff can do that'
             )
         return redirect(reverse('home'))
     region = get_object_or_404(Region, id=item_id)
@@ -164,16 +161,15 @@ class LocationBookmark(View):
             location.bookmarks.remove(request.user)
         else:
             location.bookmarks.add(request.user)
-        
         return HttpResponseRedirect(reverse('location', args=[slug]))
-
 
 
 @login_required
 def my_account(request):
     user = get_object_or_404(User, username=request.user)
     is_patron = get_object_or_404(Patron, user=request.user)
-    locations = Location.objects.filter(bookmarks=user).order_by('country', 'title')
+    locations = Location.objects.filter(bookmarks=user).order_by(
+        'country', 'title')
     template = 'my_account.html'
     context = {
         'user': user,

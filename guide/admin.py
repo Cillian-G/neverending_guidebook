@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Region, Location, Patron, Country 
+from .models import Region, Location, Patron, Country
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -22,7 +22,7 @@ class LocationAdmin(SummernoteModelAdmin):
     list_filter = ('preview',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
-    
+
 
 @admin.register(Patron)
 class PatronAdmin(admin.ModelAdmin):
@@ -30,11 +30,14 @@ class PatronAdmin(admin.ModelAdmin):
     list_filter = ('patron_status',)
     search_fields = ('user',)
 
+
 class PatronInline(admin.StackedInline):
     model = Patron
 
+
 class UserAdmin(BaseUserAdmin):
     inlines = (PatronInline,)
+
 
 # Re-register UserAdmin
 admin.site.unregister(User)
