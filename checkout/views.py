@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+import stripe
 from .forms import CheckoutForm
 from guide.models import Patron
-from django.contrib.auth.models import User
-
-import stripe
 
 
 # Add check for patron status
+@login_required
 def checkout(request):
     patron = get_object_or_404(Patron, pk=request.user.id)
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -29,6 +31,18 @@ def checkout(request):
             checkout_form.save()
             patron.patron_status = True
             patron.save()
+            send_mail(
+                'Patron status with the Neverending Guidebook',
+                (
+                    'Thank you for your patron support.\n\n'
+                    'Your card will be charged $25.\n'
+                    'You now have access to all of our location guides\n\n'
+                    'Thank you for your support,\n'
+                    'Neverending Guidebook staff'
+                ),
+                settings.DEFAULT_FROM_EMAIL,
+                [request.POST['email']]
+            )
             return render(
                 request,
                 "upgrade_success.html",)
