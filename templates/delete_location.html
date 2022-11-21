@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container pl-2">
+    <h2>Are you sure you wish to delete {{ location.title }}?</h2>
+     <p>Doing this will delete all data associated with this location</p>
+        <form method="post">
+        {% csrf_token %}
+            <button class="btn btn-outline-danger">I am sure</button>
+        </form>
+</div>
+   
+
+{% endblock %}
