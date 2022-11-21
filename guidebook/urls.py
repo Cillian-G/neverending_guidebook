@@ -29,4 +29,4 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 ]
 
-handler404 = 'boutique_ado.views.handler404'
+handler404 = 'guidebook.views.handler404'
