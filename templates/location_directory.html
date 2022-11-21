@@ -6,8 +6,9 @@
 <div>
     <h3>location directory</h3>
     <a href="{% url 'add_region' %}" class="btn btn-outline-secondary btn-sm">Add a new region</a>
+    <a href="{% url 'add_location' %}" class="btn btn-outline-secondary btn-sm">Add a new location</a>
     <ul>
-        {% regroup location_list by region as region_list %}
+        {% regroup location_list by country.region as region_list %}
         
         {% for region, countries in region_list %}
             <li>
@@ -27,6 +28,8 @@
                                 {% for location in locations %}
                                     <li>
                                         <a href="{% url 'location' location.slug %}">{{ location.title }}</a>
+                                        <a href="{% url 'edit_location' location.id %}" class="btn btn-outline-secondary btn-sm">Edit this location</a>
+                                        <a href="{% url 'delete_location' location.id %}" class="btn btn-outline-secondary btn-sm">Delete this location</a>
                                         <br>
                                         <!-- {{ location.content|safe|truncatechars_html:100 }} -->
                                         <!-- Button trigger modal -->
