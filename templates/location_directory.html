@@ -5,6 +5,7 @@
 
 <div>
     <h3>location directory</h3>
+    <a href="{% url 'add_region' %}" class="btn btn-outline-secondary btn-sm">Add a new region</a>
     <ul>
         {% regroup location_list by region as region_list %}
         
@@ -13,10 +14,10 @@
                 {{ region }} 
                 <ul>
                     <li class="list-inline-item">
-                        <button onClick="location.href='/delete/{{ region.id }}'" class="btn btn-outline-secondary btn-sm">Delete this region</button>
+                        <a href="{% url 'delete_region' region.id %}" class="btn btn-outline-secondary btn-sm">Delete this region</a>
                     </li>
                     <li class="list-inline-item">
-                        <button onClick="location.href='/edit/{{ region.id }}'" class="btn btn-outline-secondary btn-sm">Edit this region</button>
+                        <a href="{% url 'edit_region' region.id %}" class="btn btn-outline-secondary btn-sm">Edit this region</a>
                     </li>
                     {% regroup countries by country as country_list %}
                     {% for country, locations in country_list %}
