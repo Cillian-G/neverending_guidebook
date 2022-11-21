@@ -90,7 +90,7 @@ def edit_location(request, location_id):
         return redirect(reverse('home'))
     location = get_object_or_404(Location, id=location_id)
     location_form = LocationForm(request.POST, request.FILES, instance=location)
-    if request.method == 'POST':
+    if request.method == 'POST': 
         if location_form.is_valid():
             # location_form.instance.image = request.POST.get('image')
             location_form.save()
@@ -125,7 +125,6 @@ def delete_region(request, item_id):
             request, 'Only memebers of the Neverending Guidebook staff can do that'
             )
     region = get_object_or_404(Region, id=item_id)
-    id = region.id
     if request.method == 'POST':
         region.delete()
         return redirect('directory')
@@ -145,7 +144,6 @@ def edit_region(request, item_id):
     region = get_object_or_404(Region, id=item_id)
     region_form = RegionForm(request.POST or None, instance=region)
     if request.method == 'POST':
-        region_form = RegionForm(request.POST, instance=region)
         if region_form.is_valid():
             region = region_form.save(commit=False)
             region.save()
@@ -170,10 +168,6 @@ class LocationBookmark(View):
         return HttpResponseRedirect(reverse('location', args=[slug]))
 
 
-# class BookmarkList(generic.ListView):
-#     model = Location
-#     queryset = Location.objects.bookmarks.filter(id=request.user.id).order_by('country', 'title')
-#     template_name = 'my_account.html'
 
 @login_required
 def my_account(request):
@@ -187,42 +181,3 @@ def my_account(request):
         'locations': locations,
     }
     return render(request, template, context)
-
-
-# class UserBookmarks(View):
-
-#     def get(self, request, slug, *args, **kwargs): 
-#         queryset = Location.objects
-#         location = get_object_or_404(queryset, slug=slug)
-#         bookmarked = False
-#         if location.bookmarks.filter(id=self.request.user.id).exists():
-#             bookmarked = True
-        
-#         return render(
-#             request,
-#             "location.html",
-#             {
-#                 'location': location,
-#                 'bookmarked': bookmarked,
-#             }
-#         )
-
-
-
-# class BookmarkedLocations(View):
-
-#     def get(self, request):
-#         queryset = Location
-#         bookmarks = Location.bookmarks
-#         bookmarked_locations = Location.filter(
-#             id=self.request.user.id
-#             ).order_by(
-#                 "region", "country", "title"
-#                 )
-#         return render(
-#             request,
-#             "my_account.html",
-#             {
-#                 bookmarked_locations: "locations"
-#             }
-#          )
