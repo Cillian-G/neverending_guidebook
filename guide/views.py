@@ -114,6 +114,19 @@ class LocationBookmark(View):
 #     queryset = Location.objects.bookmarks.filter(id=request.user.id).order_by('country', 'title')
 #     template_name = 'my_account.html'
 
+@login_required
+def my_account(request):
+    user = get_object_or_404(User, username=request.user)
+    is_patron = get_object_or_404(Patron, user=request.user)
+    locations = Location.objects.filter(bookmarks=user).order_by('country', 'title')
+    template = 'my_account.html'
+    context = {
+        'user': user,
+        'is_patron': is_patron,
+        'locations': locations,
+    }
+    return render(request, template, context)
+
 
 # class UserBookmarks(View):
 
