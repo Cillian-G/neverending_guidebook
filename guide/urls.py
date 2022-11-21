@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.PreviewList.as_view(), name='home'),
     path('directory/', views.LocationList.as_view(), name='directory'),
     # path('bookmarks/', views.BookmarkList.as_view(), name='bookmarks'),
+    path('my_account/', views.my_account, name='my_account'),
     path('region/add/', views.add_region, name='add_region'),
     path('location/add/', views.add_location, name='add_location'),
     path(
