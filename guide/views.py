@@ -58,6 +58,66 @@ def add_region(request):
         'region_form': region_form
     }
     return render(request, 'add_region.html', context)
+
+
+@login_required
+def add_location(request):
+    if not request.user.is_superuser:
+        messages.error(
+            request,
+            'Only memebers of the Neverending Guidebook staff can do that'
+            )
+        return redirect(reverse('home'))
+    location_form = LocationForm(request.POST or None)
+    if request.method == 'POST':
+        if location_form.is_valid():
+            location_form.instance.image = request.POST.get('image')
+            location_form.save()
+            return redirect('directory')
+    context = {
+        'location_form': location_form
+    }
+    return render(request, 'add_location.html', context)
+
+
+@login_required
+def edit_location(request, location_id):
+    if not request.user.is_superuser:
+        messages.error(
+            request,
+            'Only memebers of the Neverending Guidebook staff can do that'
+            )
+        return redirect(reverse('home'))
+    location = get_object_or_404(Location, id=location_id)
+    location_form = LocationForm(request.POST or None, instance=location)
+    if request.method == 'POST':
+        if location_form.is_valid():
+            location_form.instance.image = request.POST.get('image')
+            location_form.save()
+            return redirect('directory')
+    context = {
+        'location': location,
+        'location_form': location_form
+    }
+    return render(request, 'edit_location.html', context)
+
+
+@login_required
+def delete_location(request, location_id):
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Only memebers of the Neverending Guidebook staff can do that'
+            )
+    location = get_object_or_404(Location, id=location_id)
+    if request.method == 'POST':
+        location.delete()
+        return redirect('directory')
+    context = {
+        'location': location
+    }
+    return render(request, 'delete_location.html', context)
+
+
 @login_required
 def delete_region(request, item_id):
     if not request.user.is_superuser:
