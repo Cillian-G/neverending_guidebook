@@ -1,30 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+    <!-- Account details -->
     <div>
-        <h3>{{ user.username }}'s bookmarks</h3>
-        <h5>You can keep track of your bookmarked posts here!</h5>
-        <ul>
-            {% for location in locations %}
-                <li>
-                    <a href="{% url 'location' location.slug %}">{{ location.title }}</a> 
-                </li>
-            {% empty  %}
-                <li>
-                    <h5>You havent bookmarked any posts</h5>
-                </li>    
-            {% endfor %}
-        </ul>
-        <h3>
-            Patron Status: 
+        <h2>{{ user.username }}'s account</h2>
+        <div class="content-spacing"> 
+            <!-- Bookmark List -->
+            <h4>{{ user.username }}'s bookmarks</h4>
+            <p>You can keep track of your bookmarked posts here!</p>
+            <ul>
+                {% for location in locations %}
+                    <li>
+                        <a href="{% url 'location' location.slug %}">{{ location.title }}</a> 
+                    </li>
+                {% empty  %}
+                    <li>
+                        <h5>You havent bookmarked any posts</h5>
+                    </li>    
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Patron Status Check Icon -->
+        <div class="content-spacing">
+            <h4>
+                {{ user.username }}'s Patron Status:
+                {% if is_patron.patron_status %}
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                {% else %}
+                    <i class="fa-solid fa-circle-xmark text-danger"></i>
+                {% endif %}
+            </h4>
             {% if is_patron.patron_status %}
-                <i class="fa-solid fa-circle-check text-success"></i>
+                <p>Thank your for your support!</p>
             {% else %}
-                <i class="fa-solid fa-circle-xmark text-danger"></i>
-                <h5>You can upgrade your account to patron status<a class="nav-link link" href="{% url 'checkout' %}">here!</a></h5>
+                <p>
+                    You can upgrade your account to patron status
+                    <a class="nav-link patron-link" href="{% url 'checkout' %}">here!</a>
+                </p>
             {% endif %}
-        </h3>
+        </div>
+        
     </div>
 
     
