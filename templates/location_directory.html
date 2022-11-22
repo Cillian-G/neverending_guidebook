@@ -17,13 +17,13 @@
         <a href="{% url 'add_region' %}" class="btn btn-outline-secondary btn-sm">Add a new region</a>
         <a href="{% url 'add_location' %}" class="btn btn-outline-secondary btn-sm">Add a new location</a>
         {% endif %}
-        <ul>
+        <ul class="location-list">
             {% regroup location_list by country.region as region_list %}
             
             {% for region, countries in region_list %}
                 <li>
-                    {{ region }} 
-                    <ul>
+                    <h4>{{ region }}</h4> 
+                    <ul class='location-list'>
                         {% if request.user.is_superuser %}
                             <li class="list-inline-item">
                                 <a href="{% url 'delete_region' region.id %}" class="btn btn-outline-secondary btn-sm">Delete this region</a>
@@ -35,8 +35,8 @@
                         {% regroup countries by country as country_list %}
                         {% for country, locations in country_list %}
                             <li>
-                                {{ country }}
-                                <ul> 
+                                <h5>{{ country }}</h5>
+                                <ul class="location-list"> 
                                     {% for location in locations %}
                                         <li>
                                             <a href="{% url 'location' location.slug %}">{{ location.title }}</a>
@@ -47,7 +47,7 @@
                                             <br>
                                             <!-- Button trigger modal -->
                                             {% if request.user.patron.patron_status or request.user.is_superuser %}
-                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-location-{{location.id}}">
+                                                <a href="#" class="btn btn-primary green-button" data-bs-toggle="modal" data-bs-target="#modal-location-{{location.id}}">
                                                     View in directory
                                                 </a>
                                                 
