@@ -6,10 +6,67 @@ h1 {
     color: #055105;
 }
 
-.link {
-    text-decoration-color: blue;
+.site-title {
+    color: #055105;
+    text-decoration-line: none;
+}
+
+/* Link styling */
+.patron-link {
+    text-decoration-color: #055105;
     text-decoration-line: underline;
-    color: blue;
+    color: #055105;
+}
+
+.patron-link:hover {
+    color: #90A955 !important;
+    text-decoration-line: underline !important; 
+    text-decoration-color: #90A955 !important;
+}
+
+.site-title:hover {
+    color: #90A955;
+}
+
+a {
+    color: #055105;
+    text-decoration-line: none
+}
+
+a:hover {
+    color:#90A955;
+}
+
+/* Buttons */
+#submit-button {
+    margin-top: 25px;
+    background-color: #055105;
+}
+
+.green-button {
+    background-color: #055105 !important;
+    border-color: #055105 !important;
+}
+
+.green-button:hover {
+    color: #055105 !important;
+    background-color: white !important;
+    border: #055105 !important;
+    border-width: 1px;
+}
+
+.white-button {
+    background-color: white !important;
+    color: #055105 !important;
+    border-color: #055105 !important;
+}
+
+.white-button:hover {
+    background-color: #90A955 !important;
+    color: white !important;
+    border-color: #90A955 !important;
+}
+
 }
 
 .link:hover {
