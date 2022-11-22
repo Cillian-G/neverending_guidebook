@@ -7,7 +7,6 @@
         <h2>Contact Form</h2>
         <p>Want to get in touch? Use the form below to send us a message and we'll get back to you as soon as possible!</p>
 
-        <!-- Crispy fields not working? -->
         <form action="{% url 'contact' %}" method="POST" id="contact-form">
             <fieldset>
                 {% csrf_token %}
