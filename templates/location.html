@@ -1,9 +1,12 @@
-{% extends "base.html" %}{% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 
 {% load crispy_forms_tags %}
 
 <div>
     <h3>{{ location.title }}, {{ location.country }}</h3>
+</div>
 
 {% if request.user.patron.patron_status or location.preview or request.user.is_superuser %}
     {% if user.is_authenticated %}
@@ -21,7 +24,14 @@
                 </button>
             {% endif %}
             </form>
+    {% endif %}
+    <figure id="location-image">
+        {% if "placeholder" in location.image.url %} 
+            <img src="{% static 'images/placeholder.jpeg' %}" alt="{{ location.title }}" class="img-fluid"> 
+        {% else %}
+            <img src="{{ location.image.url }}" alt="{{ location.title }}" class="img-fluid">
         {% endif %}
+    </figure>
     <div class="container">
         <div class="row">
             <div class="col card mb-4  mt-3 left  top">
