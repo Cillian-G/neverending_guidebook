@@ -3,9 +3,7 @@
 
 {% block content %}    
     <div>
-        <p>newsletter page</p>
-
-        <!-- Crispy fields not working? -->
+        <!-- Newsletter Signup Form -->
         <form action="{% url 'newsletter' %}" method="POST" id="newsletter-form">
             <fieldset>
                 {% csrf_token %}

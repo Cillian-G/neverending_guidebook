@@ -4,9 +4,8 @@
 {% block content %}
 
     <div>
-        <p>checkout page</p>
-
-        <!-- Crispy fields not working? -->
+        <!-- Checkout Title and Explanation Text -->
+        <!-- Stripe Payment Form -->
         <form action="{% url 'checkout' %}" method="POST" id="checkout-form">
             <fieldset>
                 {% csrf_token %}
@@ -34,7 +33,7 @@
    
 
 {% endblock %}
-
+<!-- Stripe JS -->
 {% block postloadjs %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}

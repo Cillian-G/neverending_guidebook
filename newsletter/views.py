@@ -6,6 +6,7 @@ from .forms import NewsletterForm
 from django.contrib import messages
 
 
+# This view generates and process the newsletter signup form
 def newsletter(request):
 
     if request.method == 'POST':

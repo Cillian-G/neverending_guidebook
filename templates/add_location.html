@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+<!-- "Add Location" form -->
 <div class="container pl-2">
     <h2>Add Location</h2>
     <form method="post" action="{% url 'add_location' %}" enctype="multipart/form-data">
@@ -9,6 +10,8 @@
 </div>
 {% endblock %}
 {% block postloadjs %}
+
+<!-- Form JavaScript -->
 <script>
     // convert location title to slug-format on front-end
     /* jshint esversion: 11 */

@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col">
-        <h3>location directory</h3>
+        <!-- Location Directory Title and Intro -->
         {% if request.user.is_superuser %}
         <a href="{% url 'add_region' %}" class="btn btn-outline-secondary btn-sm">Add a new region</a>
         <a href="{% url 'add_location' %}" class="btn btn-outline-secondary btn-sm">Add a new location</a>

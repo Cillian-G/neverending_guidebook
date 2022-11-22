@@ -50,6 +50,7 @@ class Patron(models.Model):
 
 
 # The following 4 lines of code were provided to me by a Code Institute tutor
+# It automatically creates a patron_status for new accounts
 def create_patron(instance, created, **kwargs):
     if created:
         Patron.objects.create(user=instance)

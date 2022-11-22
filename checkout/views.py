@@ -9,7 +9,7 @@ from .forms import CheckoutForm
 from guide.models import Patron
 
 
-# Add check for patron status
+# This view handles the checkout process for users upgrading to patron status
 @login_required
 def checkout(request):
     patron = get_object_or_404(Patron, pk=request.user.id)

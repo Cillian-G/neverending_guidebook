@@ -8,12 +8,14 @@ from .models import Location, User, Region, Patron
 from .forms import RegionForm, LocationForm
 
 
+# This view generates the list of preview posts on the homepage
 class PreviewList(generic.ListView):
     model = Location
     queryset = Location.objects.filter(preview=True).order_by('title')
     template_name = 'index.html'
 
 
+# This view generates the guidebook listings for individual locations
 class LocationDetails(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -29,12 +31,14 @@ class LocationDetails(View):
         )
 
 
+# This view creates the index of locations covered by the guidebook
 class LocationList(generic.ListView):
     model = Location
     queryset = Location.objects.order_by('country', 'title')
     template_name = 'location_directory.html'
 
 
+# This view allows superusers to add new regions in the front end
 @login_required
 def add_region(request):
     if not request.user.is_superuser:
@@ -54,6 +58,7 @@ def add_region(request):
     return render(request, 'add_region.html', context)
 
 
+# This view allows superusers to add new location listings in the front end
 @login_required
 def add_location(request):
     if not request.user.is_superuser:
@@ -73,6 +78,7 @@ def add_location(request):
     return render(request, 'add_location.html', context)
 
 
+# This view allows users to edit location listing details in the front end
 @login_required
 def edit_location(request, location_id):
     if not request.user.is_superuser:
@@ -96,6 +102,7 @@ def edit_location(request, location_id):
     return render(request, 'edit_location.html', context)
 
 
+# This view allows superusers to delete locations from the front end
 @login_required
 def delete_location(request, location_id):
     if not request.user.is_superuser:
@@ -113,6 +120,7 @@ def delete_location(request, location_id):
     return render(request, 'delete_location.html', context)
 
 
+# This view allows superusers to delete region from the front end
 @login_required
 def delete_region(request, item_id):
     if not request.user.is_superuser:
@@ -130,6 +138,7 @@ def delete_region(request, item_id):
     return render(request, 'delete_region.html', context)
 
 
+# This view allows superusers to edit region titles from the front end
 @login_required
 def edit_region(request, item_id):
     if not request.user.is_superuser:
@@ -152,6 +161,7 @@ def edit_region(request, item_id):
     return render(request, 'edit_region.html', context)
 
 
+# This view allows users to bookmark locations from within the front end
 class LocationBookmark(View):
 
     def post(self, request, slug):
@@ -164,6 +174,7 @@ class LocationBookmark(View):
         return HttpResponseRedirect(reverse('location', args=[slug]))
 
 
+# This view allows signed-in users to view their patron status and bookmarks
 @login_required
 def my_account(request):
     user = get_object_or_404(User, username=request.user)

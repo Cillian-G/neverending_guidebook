@@ -4,6 +4,7 @@ from .forms import ContactForm
 from django.contrib import messages
 
 
+# This view generates the contact form on the contact.html page
 def contact(request):
 
     if request.method == 'POST':
