@@ -1,22 +1,11 @@
 # STATIC JS & CSS VALIDATION (REPLACE IMAGE LINKS AND TITLES)
 
-![Checkout admin.py validation](/documentation/testing/testing_images/testing-checkout-admin.png)
-- Checkout admin.py validation
+![JSHINT JS validation](/documentation/testing/testing_images/testing-css.png)
+- JSHINT JS validation
 
-![Checkout apps.py validation](/documentation/testing/testing_images/testing-checkout-apps.png)
-- Checkout apps.py validation
+The one error is caused by Stripe code, not my own
 
-![Checkout forms.py validation](/documentation/testing/testing_images/testing-checkout-forms.png)
-- Checkout forms.py validation
+![Checkout apps.py validation](/documentation/testing/testing_images/testing-js.png)
+- WEB3 CSS validation
 
-![Checkout models.py validation](/documentation/testing/testing_images/testing-checkout-models.png)
-- Checkout models.py validation
-
-![Checkout tests.py validation](/documentation/testing/testing_images/testing-checkout-tests.png)
-- Checkout tests.py validation
-
-![Checkout urls.py validation](/documentation/testing/testing_images/testing-checkout-urls.png)
-- Checkout urls.py validation
-
-![Checkout views.py validation](/documentation/testing/testing_images/testing-checkout-views.png)
-- Checkout views.py validation
+The errors when testing by URL are caused by Bootstrap files, not my own code
