@@ -3,9 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    
-    
     {%block meta %}
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,17 +30,18 @@
         <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
    
-   
-
     <title>Neverending Guidebook</title>
 </head>
-<body style="font-family: 'Fjalla One', san serif">
 
-    <h1>
-        <a href="{% url 'home' %}">The Neverending Guidebook</a>
-    </h1>
-    
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- Site Title -->
+<body style="font-family: 'Fjalla One', san serif">
+    <div class="site-title container">
+        <h1>
+            <a href="{% url 'home' %}" class="site-title">The Neverending Guidebook</a>
+        </h1>
+    </div>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -105,8 +103,6 @@
 
     <!-- Footer -->
     <footer class="footer container">
-                <p>This site was created by 
-        <p>This site was created by 
                 <p>This site was created by 
                     <a href="https://github.com/Cillian-G" target="_blank" rel="nofollow noreferrer">Cillian Goan</a>
                     for a student project, for educational purposes only
