@@ -67,8 +67,35 @@ a:hover {
     border-color: #90A955 !important;
 }
 
+/* Form styling */
+input, textarea, select {
+    border-radius: 5px !important;
+    border-color: #055105 !important;
+    border-width: 3px !important;
 }
 
-.link:hover {
-    color: blue;
+/* Spacing */
+.content-spacing {
+    padding-top: 50px;
+}
+
+footer {
+    padding-top: 50px;
+}
+
+.homepage-section {
+    padding-top: 50px;
+}
+
+#newsletter-form {
+    padding-top: 75px;
+}
+
+footer {
+    padding-left: 30px;
+}
+
+/* List styling */
+.location-list {
+    list-style: none;
 }
