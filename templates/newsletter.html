@@ -3,10 +3,12 @@
 
 {% block content %}    
     <div>
+        <h2>Sign up for our newsletter!</h2>
         <!-- Newsletter Signup Form -->
         <form action="{% url 'newsletter' %}" method="POST" id="newsletter-form">
             <fieldset>
                 {% csrf_token %}
+                <p>Enter your email below to be added to our mailing list</p>
                 {{ newsletter_form.email }}
             </fieldset>
             <div>                    

@@ -5,6 +5,14 @@
 <div class="row">
     <div class="col">
         <!-- Location Directory Title and Intro -->
+        <h2>Location directory</h2>
+        <p>
+            Here it is, the index of the last guidebook you'll ever need! Below you can browse our full directory of destinations, 
+            ordered by region, and then by country. Are you worried about using up your precious data allowance while on the road? 
+            Patrons can view our listings in data-saving scrolling pop-ups by clicking "view in directory". For those of you still 
+            in the planing stage, or if you're lucky enough to have found a hostel with unlimited wifi, you can view full listings
+            with images by clicking destination titles. 
+        </p>
         {% if request.user.is_superuser %}
         <a href="{% url 'add_region' %}" class="btn btn-outline-secondary btn-sm">Add a new region</a>
         <a href="{% url 'add_location' %}" class="btn btn-outline-secondary btn-sm">Add a new location</a>
