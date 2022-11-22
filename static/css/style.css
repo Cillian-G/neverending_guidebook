@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
+/* Heading Styling */
 h1 {
     font-family: 'Fjalla One', sans-serif;
+    color: #055105;
 }
 
 .link {
