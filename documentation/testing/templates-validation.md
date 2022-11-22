@@ -1,22 +1,8 @@
-# STATIC JS & CSS VALIDATION (REPLACE IMAGE LINKS AND TITLES)
+# HTML VALIDATION 
 
-![Checkout admin.py validation](/documentation/testing/testing_images/testing-checkout-admin.png)
-- Checkout admin.py validation
+![W3C HTML validation](/documentation/testing/testing_images/testing-html.png)
+- W3C HTML validation
 
-![Checkout apps.py validation](/documentation/testing/testing_images/testing-checkout-apps.png)
-- Checkout apps.py validation
-
-![Checkout forms.py validation](/documentation/testing/testing_images/testing-checkout-forms.png)
-- Checkout forms.py validation
-
-![Checkout models.py validation](/documentation/testing/testing_images/testing-checkout-models.png)
-- Checkout models.py validation
-
-![Checkout tests.py validation](/documentation/testing/testing_images/testing-checkout-tests.png)
-- Checkout tests.py validation
-
-![Checkout urls.py validation](/documentation/testing/testing_images/testing-checkout-urls.png)
-- Checkout urls.py validation
-
-![Checkout views.py validation](/documentation/testing/testing_images/testing-checkout-views.png)
-- Checkout views.py validation
+[W3C HTML validation](/documentation/testing/testing_images/testing-html-errors.png)
+- HTML errors Caused by content source
+The content in location listings was copied from wikitravel, an open source wikipedia style online guidebook. The formatting of this copied content causes some HTML errors, which are not the result of my own code. These errors are only occuring because of the source of the placeholder content I am using, not due to my own code. 
